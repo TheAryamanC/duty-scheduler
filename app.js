@@ -284,8 +284,7 @@ function importPreferencesCSV(event) {
                 if (!email) continue;
 
                 if (!scheduler.preferences.has(email)) {
-                    errors.push(`Row ${i + 1}: Unknown email "${email}"`);
-                    continue;
+                    scheduler.addPerson(email.split('@')[0], email); 
                 }
 
                 const preferred = preferredCol >= 0 ? parseDateList(row[preferredCol]) : [];
